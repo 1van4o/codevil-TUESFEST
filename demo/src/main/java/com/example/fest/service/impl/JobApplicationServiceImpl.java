@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,5 +44,18 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         JobApplicationDomain updated = entityManager.merge(entity);
         entityManager.flush();
         return  true;
+    }
+
+    @Override
+    public List<JobApplicationDto> getAll() {
+        Query query = entityManager.createNamedQuery("JobApplicationDomain.getAll");
+
+        List<JobApplicationDomain> apps =  query.getResultList();
+        List<JobApplicationDto> dtos = new ArrayList<>();
+
+        for (JobApplicationDomain app : apps) {
+            dtos.add(Mapper.toJobDto(app));
+        }
+        return dtos;
     }
 }

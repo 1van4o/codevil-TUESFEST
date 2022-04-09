@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/user/login", "/user/register", "/h2-console/**", "/apps/createApp", "/comments/addComment", "file:///home/anton/Documents/loginCodevil.html").permitAll().
+                .authorizeRequests().antMatchers("/user/login", "/user/register", "/h2-console/**", "/apps/createApp", "/comments/addComment", "/public/**", "/favicon.ico").permitAll().
                         anyRequest().authenticated().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

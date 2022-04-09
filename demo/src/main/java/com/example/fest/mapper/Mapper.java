@@ -24,7 +24,7 @@ public class Mapper {
     }
 
     public static JobApplicationDto toJobDto(JobApplicationDomain app){
-        return new JobApplicationDto(null, app.getTitle(), app.getText());
+        return new JobApplicationDto(app.getId(), app.getTitle(), app.getText());
     }
     public static JobApplicationDomain toJob(JobApplicationDto dto){
         return new JobApplicationDomain(dto.getTitle(), dto.getText());

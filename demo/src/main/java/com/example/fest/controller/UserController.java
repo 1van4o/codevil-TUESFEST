@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.attribute.UserPrincipal;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     @Autowired

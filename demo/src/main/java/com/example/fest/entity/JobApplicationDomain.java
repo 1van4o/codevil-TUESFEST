@@ -14,7 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @NamedQueries({
-        @NamedQuery(name = "JobApplicationDomain.findById", query = "SELECT j FROM JobApplicationDomain j WHERE j.id = :id")
+        @NamedQuery(name = "JobApplicationDomain.findById", query = "SELECT j FROM JobApplicationDomain j WHERE j.id = :id"),
+        @NamedQuery(name = "JobApplicationDomain.getAll", query = "SELECT j FROM JobApplicationDomain j")
 })
 public class JobApplicationDomain {
     @Id
