@@ -142,16 +142,31 @@ if(response.status === 200){
         const node = document.createElement("p");
         const node2 = document.createElement("p");
         const button1 = document.createElement("button");
+        const comment = document.createElement("a");
         button1.setAttribute("id", data[i]["id"]);
         button1.setAttribute("onclick", "volunteer(this.id)");
+//        <a href="commentsCodevil.html">comments</a>
+        comment.setAttribute("href", "commentsCodevil.html");
+
+
+//        if(data[i]["volunteer_id"] === null){
+//                    button1.appendChild(document.createTextNode("Apply for this Job App"));
+//                    button1.setAttribute("onclick", "volunteer(this.id)");
+//                }
+//                else{
+//                    button1.appendChild(document.createTextNode("There is already volunteer for this job"));
+//                }
+
 
         button1.appendChild(document.createTextNode("Apply for this Job App"));
         node.appendChild(document.createTextNode(data[i]["title"]));
         node2.appendChild(document.createTextNode(data[i]["text"]));
+        comment.appendChild(document.createTextNode("comments"));
 
         jobApplicationElement.appendChild(node);
         jobApplicationElement.appendChild(node2);
         jobApplicationElement.appendChild(button1);
+        jobApplicationElement.appendChild(comment);
 
     }
 }
@@ -183,6 +198,42 @@ function volunteer(_id){
 
 
     })
+}
+
+
+
+
+function showComments(){
+    fetch('http://localhost:8080/comments/showComments', {
+        method: 'get',
+        headers: new Headers({'content-type': 'application/json',
+                            'Authorization': 'Bearer ' + sessionStorage.getItem('loginToken'),
+
+
+                        }),
+        },
+    )
+    .then( async (response) => {
+
+// get json response here
+let data = await response.json();
+console.log(response.status)
+if(response.status === 200){
+//    console.log(data);
+
+    let commentElement = document.getElementById("comments");
+
+    for(let i = 0; i < data.length; i++){
+        const comment = document.createElement("p");
+
+        comment.appendChild(document.createTextNode(data[i]["text"]));
+
+        commentElement.appendChild(comment);
+    }
+}
+
+
+})
 }
 
 

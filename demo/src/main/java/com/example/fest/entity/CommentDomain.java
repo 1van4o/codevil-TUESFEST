@@ -13,6 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "comments")
+@NamedQueries({
+        @NamedQuery(name = "CommentsDomain.findByAppId", query = "SELECT j FROM CommentDomain j WHERE j.jobApplicationId = :jobApplicationId")
+})
 public class CommentDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

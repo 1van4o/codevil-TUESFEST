@@ -1,6 +1,7 @@
 package com.example.fest.controller;
 
 import com.example.fest.dto.CommentDto;
+import com.example.fest.dto.JobApplicationDto;
 import com.example.fest.entity.CommentDomain;
 import com.example.fest.entity.UserDomain;
 import com.example.fest.mapper.Mapper;
@@ -11,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 //@CrossOrigin
@@ -34,5 +37,11 @@ public class CommentController {
         comment.setJobApplicationId(dto.getJoApplicationId());//TODO
 
         return commentService.comment(comment);
+    }
+
+
+    @GetMapping("/showComments")// /comments/showComments
+    public List<CommentDto> getAll(){
+        return commentService.getComments();
     }
 }
