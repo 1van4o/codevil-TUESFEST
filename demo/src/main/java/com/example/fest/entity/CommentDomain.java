@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "comments")
 @NamedQueries({
-        @NamedQuery(name = "CommentsDomain.findByAppId", query = "SELECT j FROM CommentDomain j WHERE j.jobApplicationId = jobApplicationId")
+        @NamedQuery(name = "CommentsDomain.findByAppId", query = "SELECT j FROM CommentDomain j WHERE j.job_application_id = :jobApplicationId")
 })
 public class CommentDomain {
     @Id
@@ -22,7 +22,7 @@ public class CommentDomain {
     @Column
     private Long id;
     @Column
-    private Long jobApplicationId;
+    private Long job_application_id;
     @JoinColumn(name = "user_id")
     @ManyToOne
     private UserDomain userId;

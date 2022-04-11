@@ -35,6 +35,6 @@ public class Mapper {
     }
 
     public static CommentDto toCommentDto(CommentDomain entity){
-        return new CommentDto(entity.getText(), entity.getJobApplicationId());
+        return new CommentDto(entity.getText(), entity.getJob_application_id());
     }
 }

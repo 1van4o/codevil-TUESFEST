@@ -35,14 +35,14 @@ public class CommentController {
 
         CommentDomain comment = Mapper.toComment(dto);
         comment.setUserId(user);
-        comment.setJobApplicationId(dto.getJoApplicationId());//TODO
+        comment.setJob_application_id(dto.getJoApplicationId());//TODO
 
         return commentService.comment(comment);
     }
 
 
     @PostMapping("/showComments")// /comments/showComments
-    public List<CommentDto> getAll(@RequestBody JobApplicationDomain jobApplicationDomain){
-        return commentService.getComments();
+    public List<CommentDto> getAll(@RequestBody JobApplicationDto jobApplicationDto){
+        return commentService.getComments(jobApplicationDto);
     }
 }

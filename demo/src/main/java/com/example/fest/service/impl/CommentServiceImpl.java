@@ -29,8 +29,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentDto> getComments() {
+    public List<CommentDto> getComments(JobApplicationDto jobApplicationDto) {
         Query query = entityManager.createNamedQuery("CommentsDomain.findByAppId");
+        query.setParameter("jobApplicationId", jobApplicationDto.getId());
 
         List<CommentDomain> comments =  query.getResultList();
         List<CommentDto> dtos = new ArrayList<>();
