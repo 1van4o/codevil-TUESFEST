@@ -203,9 +203,12 @@ function volunteer(_id){
 
 
 
-function showComments(){
+function showComments(_jobId){
     fetch('http://localhost:8080/comments/showComments', {
-        method: 'get',
+        method: 'post',
+        body: JSON.stringify({
+            id: _jobId
+        }),
         headers: new Headers({'content-type': 'application/json',
                             'Authorization': 'Bearer ' + sessionStorage.getItem('loginToken'),
 
@@ -235,5 +238,8 @@ if(response.status === 200){
 
 })
 }
+
+
+
 
 

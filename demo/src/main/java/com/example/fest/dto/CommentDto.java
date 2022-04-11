@@ -14,5 +14,5 @@ import javax.persistence.Column;
 @AllArgsConstructor
 public class CommentDto {
     private String text;
-    private Long joApplicationId;//TODO
+    private Long joApplicationId;
 }
