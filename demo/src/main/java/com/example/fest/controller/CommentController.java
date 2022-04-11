@@ -3,6 +3,7 @@ package com.example.fest.controller;
 import com.example.fest.dto.CommentDto;
 import com.example.fest.dto.JobApplicationDto;
 import com.example.fest.entity.CommentDomain;
+import com.example.fest.entity.JobApplicationDomain;
 import com.example.fest.entity.UserDomain;
 import com.example.fest.mapper.Mapper;
 import com.example.fest.service.CommentService;
@@ -40,8 +41,8 @@ public class CommentController {
     }
 
 
-    @GetMapping("/showComments")// /comments/showComments
-    public List<CommentDto> getAll(){
+    @PostMapping("/showComments")// /comments/showComments
+    public List<CommentDto> getAll(@RequestBody JobApplicationDomain jobApplicationDomain){
         return commentService.getComments();
     }
 }

@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "comments")
 @NamedQueries({
-        @NamedQuery(name = "CommentsDomain.findByAppId", query = "SELECT j FROM CommentDomain j WHERE j.jobApplicationId = :jobApplicationId")
+        @NamedQuery(name = "CommentsDomain.findByAppId", query = "SELECT j FROM CommentDomain j WHERE j.jobApplicationId = jobApplicationId")
 })
 public class CommentDomain {
     @Id
