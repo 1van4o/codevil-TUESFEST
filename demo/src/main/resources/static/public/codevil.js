@@ -132,21 +132,42 @@ function getAllApps(){
 
 // get json response here
 let data = await response.json();
-console.log(response.status)
+console.log(response.status);
+console.log(data);
 if(response.status === 200){
 //    console.log(data);
 
     let jobApplicationElement = document.getElementById("job_applications");
-
+    console.log(data);
     for(let i = 0; i < data.length; i++){
+        console.log(data[i]["id"]);
+        let div = document.createElement("div");
+        div.setAttribute("id", "application" + data[i]["id"]);
         const node = document.createElement("p");
         const node2 = document.createElement("p");
         const button1 = document.createElement("button");
-        const comment = document.createElement("a");
+        const comment = document.createElement("button");
+        const AddComment = document.createElement("input");
+        const addCommentBtn = document.createElement("button");
         button1.setAttribute("id", data[i]["id"]);
         button1.setAttribute("onclick", "volunteer(this.id)");
 //        <a href="commentsCodevil.html">comments</a>
-        comment.setAttribute("href", "commentsCodevil.html");
+//        comment.setAttribute("id", "comments");
+        let currentId = data[i]["id"];
+//        comment.setAttribute("onclick", "showComments(this.currentId)");
+        comment.setAttribute("onclick", "showComments(" + currentId + ")");
+        AddComment.setAttribute("type", "text");
+        AddComment.setAttribute("id", "text" + currentId);
+        addCommentBtn.setAttribute("onclick", "addComment(" + currentId + ")");
+
+
+        div.appendChild(node);
+        div.appendChild(node2);
+        div.appendChild(button1);
+        div.appendChild(comment);
+        div.appendChild(AddComment);
+        div.appendChild(addCommentBtn);
+        jobApplicationElement.appendChild(div);
 
 
 //        if(data[i]["volunteer_id"] === null){
@@ -162,11 +183,10 @@ if(response.status === 200){
         node.appendChild(document.createTextNode(data[i]["title"]));
         node2.appendChild(document.createTextNode(data[i]["text"]));
         comment.appendChild(document.createTextNode("comments"));
+        AddComment.appendChild(document.createTextNode("comments"));
+        addCommentBtn.appendChild(document.createTextNode("Add Comment"));
 
-        jobApplicationElement.appendChild(node);
-        jobApplicationElement.appendChild(node2);
-        jobApplicationElement.appendChild(button1);
-        jobApplicationElement.appendChild(comment);
+        jobApplicationElement.append(div);
 
     }
 }
@@ -177,6 +197,7 @@ if(response.status === 200){
 
 
 function volunteer(_id){
+
         fetch('http://localhost:8080/apps/updateApp', {
             method: 'post',
             body: JSON.stringify({
@@ -204,6 +225,7 @@ function volunteer(_id){
 
 
 function showComments(_jobId){
+    console.log(_jobId);
     fetch('http://localhost:8080/comments/showComments', {
         method: 'post',
         body: JSON.stringify({
@@ -224,19 +246,50 @@ console.log(response.status)
 if(response.status === 200){
 //    console.log(data);
 
-    let commentElement = document.getElementById("comments");
 
+    console.log(data.length);
     for(let i = 0; i < data.length; i++){
+        let commentElement = document.getElementById("application" + _jobId);
         const comment = document.createElement("p");
 
         comment.appendChild(document.createTextNode(data[i]["text"]));
-
-        commentElement.appendChild(comment);
+        console.log(data[i]["text"]);
+        commentElement.append(comment);
     }
 }
 
 
 })
+}
+
+
+function addComment(_jobAppId){
+    let _text = document.getElementById("text" + _jobAppId).value;
+    fetch('http://localhost:8080/comments/addComment', {
+            method: 'post',
+            body: JSON.stringify({
+                text: _text,
+                joApplicationId: _jobAppId
+            }),
+            headers: new Headers({'content-type': 'application/json',
+                                'Authorization': 'Bearer ' + sessionStorage.getItem('loginToken'),
+
+
+                            }),
+            },
+        )
+        .then( async (response) => {
+
+    // get json response here
+    let data = await response.json();
+    console.log(response.status)
+    if(response.status === 200){
+        console.log(data);
+    }
+
+
+    })
+
 }
 
 
