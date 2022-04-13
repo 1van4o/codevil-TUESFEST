@@ -1,5 +1,66 @@
 <html>
     <head>
+        <style>
+            body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(48, 46, 46);
+  color: white;
+  padding-top: 25vh;
+}
+.container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  background-color: rgb(22, 21, 21);
+  border-radius: 15px;
+  padding: 25px 10px;
+  box-shadow: 0 0 15px rgb(80, 79, 79);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+input {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(48, 46, 46);
+}
+.btns {
+  margin: 15px auto;
+}
+button {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 5px 25px;
+}
+button:hover {
+  background-color: tomato;
+}
+body {
+			  background-image: url('img.jpg');
+			  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  -webkit-background-size: cover;
+  background-size: cover;
+		}
+        </style>
         <title>Log in - Codevil</title>
 
     </head>
@@ -9,20 +70,16 @@
         </script>
 
 
-        <input name="text" id="text" value=""class="text"><br>
-        <input type="password" name="text" id="text2" value=""class="text"><br>
+<div class="container">
+    <h2>Login</h2>
+      <input name="text" id="text" value=""class="text" required>
+      <input type="password" name="text" id="text2" value=""class="text" required><br>
+      <div class="btns">
         <button onclick="login()">login</button>
-        <a href="createAppCodevil.html">Create Job Application</a>
         <a href="registerCodevil.html">Register</a>
-        <button onclick="getAllApps()">Get All</button>
+      </div>
+  </div>
 
-
-        <!-- <input type="text" name="" id="title" value="title">
-        <input type="text" name="" id="text" value="text">
-        <button onclick="createApp()">Create Job Application</button> -->
-        <div id="job_applications">
-
-        </div>
 
 
     </body>

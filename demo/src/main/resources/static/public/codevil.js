@@ -27,9 +27,9 @@ function login() {
             console.log(data);
             // token = data['token'];
             sessionStorage.setItem('loginToken', data['token']);
+
             // console.log(token);
         }
-
     })
 }
 
