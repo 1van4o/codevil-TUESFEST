@@ -27,7 +27,7 @@ function login() {
             console.log(data);
             // token = data['token'];
             sessionStorage.setItem('loginToken', data['token']);
-
+            location.href = 'startPageCodevil.html';
             // console.log(token);
         }
     })
@@ -65,6 +65,7 @@ let data = await response.json();
 console.log(response.status)
 if(response.status === 200){
     console.log(data);
+    location.href = 'loginCodevil.html';
 }
 
 
@@ -143,6 +144,7 @@ if(response.status === 200){
         console.log(data[i]["id"]);
         let div = document.createElement("div");
         div.setAttribute("id", "application" + data[i]["id"]);
+        const line = document.createElement("br");
         const node = document.createElement("p");
         const node2 = document.createElement("p");
         const button1 = document.createElement("button");
@@ -150,7 +152,8 @@ if(response.status === 200){
         const AddComment = document.createElement("input");
         const addCommentBtn = document.createElement("button");
         button1.setAttribute("id", data[i]["id"]);
-        button1.setAttribute("onclick", "volunteer(this.id)");
+            button1.setAttribute("onclick", "volunteer(this.id)");
+
 //        <a href="commentsCodevil.html">comments</a>
 //        comment.setAttribute("id", "comments");
         let currentId = data[i]["id"];
@@ -159,14 +162,24 @@ if(response.status === 200){
         AddComment.setAttribute("type", "text");
         AddComment.setAttribute("id", "text" + currentId);
         addCommentBtn.setAttribute("onclick", "addComment(" + currentId + ")");
+        button1.setAttribute("class", "blank");
+        comment.setAttribute("class", "blank");
+        AddComment.setAttribute("class", "blank");
+        addCommentBtn.setAttribute("class", "blank");
 
 
         div.appendChild(node);
+        div.appendChild(line);
         div.appendChild(node2);
+        div.appendChild(line);
         div.appendChild(button1);
+        div.appendChild(line);
         div.appendChild(comment);
+        div.appendChild(line);
         div.appendChild(AddComment);
+        div.appendChild(line);
         div.appendChild(addCommentBtn);
+        div.appendChild(line);
         jobApplicationElement.appendChild(div);
 
 
@@ -290,6 +303,12 @@ function addComment(_jobAppId){
 
     })
 
+}
+
+
+function logout(){
+    sessionStorage.setItem('loginToken', null);
+    location.href = 'mainPageCodevil.html';
 }
 
 

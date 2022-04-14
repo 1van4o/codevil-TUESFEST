@@ -9,5 +9,5 @@ public interface JobApplicationService {
     Boolean save(JobApplicationDomain entity);
     JobApplicationDomain findById(Long id);
     Boolean update(JobApplicationDomain entity);
-    List<JobApplicationDto> getAll();
+    List<JobApplicationDomain> getAll();
 }

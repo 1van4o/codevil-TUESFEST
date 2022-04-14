@@ -47,7 +47,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     @Override
-    public List<JobApplicationDto> getAll() {
+    public List<JobApplicationDomain> getAll() {
         Query query = entityManager.createNamedQuery("JobApplicationDomain.getAll");
 
         List<JobApplicationDomain> apps =  query.getResultList();
@@ -56,6 +56,6 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         for (JobApplicationDomain app : apps) {
             dtos.add(Mapper.toJobDto(app));
         }
-        return dtos;
+        return apps;
     }
 }

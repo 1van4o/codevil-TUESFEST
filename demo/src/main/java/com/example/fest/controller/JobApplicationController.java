@@ -59,7 +59,7 @@ public class JobApplicationController {
     }
 
     @GetMapping("/getAllApps")
-    public List<JobApplicationDto> getAll(){
+    public List<JobApplicationDomain> getAll(){
         return jobApplicationService.getAll();
     }
 }
