@@ -1,6 +1,7 @@
 package com.example.fest.dto;
 
 
+import com.example.fest.entity.UserDomain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,4 +17,6 @@ public class JobApplicationDto {
     private Long id;
     private String title;
     private String text;
+    private UserDto employer;
+    private UserDto volunteer;
 }

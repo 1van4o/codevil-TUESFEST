@@ -16,15 +16,15 @@ import java.util.List;
 public class Mapper {
 
     public static UserDto toDto(UserDomain entity){
-        return new UserDto(entity.getUsername(), entity.getPassword(), entity.getType());
+        return new UserDto(entity.getUsername(), null, entity.getType());
     }
 
     public static UserDomain toUser(UserDto dto, UserDomain password){
-        return new UserDomain(null, dto.getUsername(), password.getPassword(), dto.getType());
+        return new UserDomain(null, dto.getUsername(), null, dto.getType());
     }
 
     public static JobApplicationDto toJobDto(JobApplicationDomain app){
-        return new JobApplicationDto(app.getId(), app.getTitle(), app.getText());
+        return new JobApplicationDto(app.getId(), app.getTitle(), app.getText(), toDto(app.getEmployer()), toDto(app.getVolunteer()));
     }
     public static JobApplicationDomain toJob(JobApplicationDto dto){
         return new JobApplicationDomain(dto.getTitle(), dto.getText());
@@ -35,6 +35,6 @@ public class Mapper {
     }
 
     public static CommentDto toCommentDto(CommentDomain entity){
-        return new CommentDto(entity.getText(), entity.getJob_application_id());
+        return new CommentDto(toDto(entity.getUserId()),entity.getText(), entity.getJob_application_id());
     }
 }

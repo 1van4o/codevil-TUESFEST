@@ -51,11 +51,24 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         Query query = entityManager.createNamedQuery("JobApplicationDomain.getAll");
 
         List<JobApplicationDomain> apps =  query.getResultList();
+//        List<JobApplicationDto> dtos = new ArrayList<>();
+//
+//        for (JobApplicationDomain app : apps) {
+//            dtos.add(Mapper.toJobDto(app));
+//        }
+        return apps;
+    }
+
+    @Override
+    public List<JobApplicationDto> getAllApplied() {
+        Query query = entityManager.createNamedQuery("JobApplicationDomain.getApps");
+
+        List<JobApplicationDomain> apps =  query.getResultList();
         List<JobApplicationDto> dtos = new ArrayList<>();
 
         for (JobApplicationDomain app : apps) {
             dtos.add(Mapper.toJobDto(app));
         }
-        return apps;
+        return dtos;
     }
 }

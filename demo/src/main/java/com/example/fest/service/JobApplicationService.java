@@ -10,4 +10,6 @@ public interface JobApplicationService {
     JobApplicationDomain findById(Long id);
     Boolean update(JobApplicationDomain entity);
     List<JobApplicationDomain> getAll();
+
+    List<JobApplicationDto> getAllApplied();
 }

@@ -1,5 +1,11 @@
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Oswald&display=swap" rel="stylesheet">
         <style>
             body {
   overflow-x: hidden;
@@ -92,12 +98,12 @@
 }
 
 /* mobile styles */
-@media only screen and (max-width: 767px) { 
+@media only screen and (max-width: 767px) {
   .menu-container {
     flex-direction: column;
     align-items: flex-end;
   }
-  
+
   .menu {
     position: absolute;
     box-sizing: border-box;
@@ -120,7 +126,7 @@
 }
 
 /* desktop styles */
-@media only screen and (min-width: 768px) { 
+@media only screen and (min-width: 768px) {
   .menu-container {
     width: 100%;
   }
@@ -155,11 +161,10 @@
   }
 }
 		body {
-            background-color: #f0efe6;
+<!--            background-color: #f0efe6;-->
 		}
 			.codevil{
 				color: #ffffff;
-				text-align: center;
 				font-size: 150px;
 			}
 			.text{
@@ -170,6 +175,76 @@
 			.logo{
 				font-size: 30px;
 			}
+			.jobapp .app{
+			    border-style: solid;
+			    border-radius: 20px;
+                margin: 50px;
+                padding: 10px;
+                background-color: #d6e6e4;
+            }
+            .jobapp{
+                padding: 160px;
+                margin: 50px;
+            }
+            .jobapp .app .title1{
+                font-size: 50px;
+            }
+            .jobapp .app .text1{
+                font-size: 30px;
+            }
+            .blank{
+                font-size: 40px;
+                margin: 10px;
+                background-color: #6b30c9;
+                border-radius: 10px;
+                font-family: 'Oswald', sans-serif;
+                background-color: #969696;
+                border-radius:42px;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff;
+                font-family:Times New Roman;
+                font-size:24px;
+                font-weight:bold;
+                padding:16px 32px;
+                text-decoration:none;
+                text-shadow:7px 5px 13px #2f6627;
+            }
+            .blank:hover{
+                background-color:#b8adad;
+            }
+            .logo{
+                font-family: 'Josefin Sans', sans-serif;
+font-family: 'Oswald', sans-serif;
+            }
+            .blank:hover{
+                background-color: white;
+                transition: 0.4s;
+            }
+            .comment{
+                widht:100px;
+                text-align: right;
+                padding-right: 500px;
+                border-radius: 20px;
+                background-color: #34cceb;
+            }
+            .myComment{
+                widht:100px;
+			    border-radius: 20px;
+			    text-align: center;
+			    width: 200px;
+			    padding-left: 500px;
+                margin-bottom: 50px;
+                background-color: white;
+            }
+            .jobapp .app input{
+                color: black;
+                background-color: #bababa;
+            }
+</style>
+
+
+
         </style>
         <script src="codevil.js">
         </script>
@@ -177,12 +252,9 @@
     </head>
     <body onload="getAllApps()">
         <style>
-            .jobapp div p{
+            div{
                 float: none !important;
                 text-align: center;
-            }
-            .jobapp div :blank::after{
-                content: "\a";
             }
             /* .jobapp div input{
                 float: none !important;
@@ -212,6 +284,13 @@
                 </li>
                 <li>
                     <a onclick="logout()" class="text">Log out</a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="appliedAppsCodevil.html" class="text" style="color: #000000;">
+                    Applied job Applications
+                  </a>
                 </li>
               </ul>
             </div>

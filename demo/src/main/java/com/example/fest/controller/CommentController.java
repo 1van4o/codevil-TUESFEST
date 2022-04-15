@@ -45,4 +45,6 @@ public class CommentController {
     public List<CommentDto> getAll(@RequestBody JobApplicationDto jobApplicationDto){
         return commentService.getComments(jobApplicationDto);
     }
+
+
 }
