@@ -9,7 +9,7 @@ public interface JobApplicationService {
     Boolean save(JobApplicationDomain entity);
     JobApplicationDomain findById(Long id);
     Boolean update(JobApplicationDomain entity);
-    List<JobApplicationDomain> getAll();
+    List<JobApplicationDto> getAll();
 
     List<JobApplicationDto> getAllApplied();
 }
