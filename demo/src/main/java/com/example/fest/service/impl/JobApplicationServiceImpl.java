@@ -43,7 +43,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     public Boolean update(JobApplicationDomain entity) {
         JobApplicationDomain updated = entityManager.merge(entity);
         entityManager.flush();
-        return  true;
+        return true;
     }
 
     @Override
